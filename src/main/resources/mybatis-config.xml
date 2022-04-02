@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+    <typeAliases>
+        <package name="cn.tt.ssm.pojo"/>
+    </typeAliases>
+<!--    pagehelper拦截器-->
+    <plugins>
+        <plugin interceptor="com.github.pagehelper.PageInterceptor">
+
+        </plugin>
+    </plugins>
+    <!-- 在mybatis配置文件中的配置标签有先后之分   -->
+    <mappers>
+        <!--        <mapper class="BookMapper"/>-->
+        <mapper resource="cn/tt/ssm/mapper/BooksMapper.xml"/>
+        <mapper resource="cn/tt/ssm/mapper/UserMapper.xml"/>
+    </mappers>
+</configuration>

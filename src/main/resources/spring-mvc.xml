@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:mvc="http://www.springframework.org/schema/mvc"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/mvc https://www.springframework.org/schema/mvc/spring-mvc.xsd http://www.springframework.org/schema/context https://www.springframework.org/schema/context/spring-context.xsd">
+
+    <!-- 扫描controller -->
+    <context:component-scan base-package="cn.tt.ssm.controller"/>
+    <!--    开启mvc注解-->
+    <mvc:annotation-driven/>
+    <!--    静态资源-->
+    <mvc:default-servlet-handler/>
+<mvc:view-controller path="/file" view-name="file"/>
+    <!--    视图解析器-->
+    <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver" id="internalResourceViewResolver">
+        <property name="prefix" value="/WEB-INF/jsp/"/>
+        <property name="suffix" value=".jsp"/>
+    </bean>
+<bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+<!--    上传文件的最大大小-->
+    <property name="maxUploadSize" value="500000"></property>
+<!--   上传文件的编码-->
+    <property name="defaultEncoding" value="UTF-8"></property>
+</bean>
+<!--&lt;!&ndash;    拦截器的配置&ndash;&gt;-->
+<!--    <mvc:interceptors>-->
+<!--&lt;!&ndash;       <mvc:interceptor>&ndash;&gt;-->
+<!--&lt;!&ndash;      &lt;!&ndash; 拦截器的拦截规则 要拦截的请求    &ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;           <mvc:mapping path="/**"/>&ndash;&gt;-->
+<!--&lt;!&ndash;&lt;!&ndash;           哪些请求不拦截&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;           <mvc:exclude-mapping path="/hello"/>&ndash;&gt;-->
+<!--&lt;!&ndash;&lt;!&ndash;           拦截器是谁&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;           <bean class="cn.tt.ssm.interceptor.MyInterceptor"/>&ndash;&gt;-->
+<!--&lt;!&ndash;       </mvc:interceptor>&ndash;&gt;-->
+<!--        <mvc:interceptor>-->
+<!--            <mvc:mapping path="/**"/>-->
+<!--            <mvc:exclude-mapping path="/login"/>-->
+<!--            <bean class="cn.tt.ssm.interceptor.LoginInterceptor"/>-->
+<!--        </mvc:interceptor>-->
+<!--    </mvc:interceptors>-->
+<!--&lt;!&ndash;    异常处理&ndash;&gt;-->
+<!--<bean class="org.springframework.web.servlet.handler.SimpleMappingExceptionResolver">-->
+<!--    <property name="exceptionMappings">-->
+<!--        <props>-->
+<!--&lt;!&ndash; 异常&ndash;&gt;-->
+<!--            <prop key="java.lang.ArithmeticException">-->
+<!--                &lt;!&ndash;    返回的视图&ndash;&gt;-->
+<!--                error-->
+<!--            </prop>-->
+<!--        </props>-->
+<!--    </property>-->
+<!--&lt;!&ndash;   给错误视图输出信息 &ndash;&gt;-->
+<!--<property name="exceptionAttribute" value="ex"></property>-->
+<!--</bean>-->
+</beans>
